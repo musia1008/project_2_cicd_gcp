@@ -1,0 +1,5 @@
+project_id = "my-goal-learning"
+region     = "us-central1"
+dataset_id = "school_data"
+table_id   = "student"
+location   = "US"
