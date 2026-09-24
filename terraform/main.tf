@@ -11,9 +11,9 @@ resource "google_bigquery_table" "student" {
 
   schema = jsonencode([
     {
-      name     = "roll_number"
-      type     = "INT64"
-      mode     = "REQUIRED"
+      name        = "roll_number"
+      type        = "INT64"
+      mode        = "REQUIRED"
       description = "Student roll number."
     },
     {
