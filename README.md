@@ -9,14 +9,14 @@ The `Provider schema refresh` GitHub Actions workflow reads
 The pinned provider commit is recorded in [`provider-schemas.json`](./provider-schemas.json).
 Renovate uses the Git refs datasource to update that commit and open a PR.
 
-The workflow requests a short-lived provider token through the provider's
-`project_2_cicd_gcp` STS policy. Set the repository Actions variable
-`GHEC_STS_DOMAIN` to the hostname of the GHEC STS service configured to read
-the `.musain11/ghec-sts/` policy directory. No PAT, service-account key, or
-GCP authentication is used by this workflow. The STS service must have its
-GitHub App installed with access to the provider repository. Enable **Allow
-GitHub Actions to create and approve pull requests** in the repository's
-Actions settings so Renovate can open update PRs using the workflow token.
+The workflow requests a short-lived provider token through the `octo-sts`
+service using the provider's `.github/chainguard/project_2_cicd_gcp.sts.yaml`
+trust policy. The action uses the documented `octo-sts.dev` endpoint by
+default; no endpoint variable is required. The Octo STS GitHub App must be
+installed with access to the provider repository. No PAT, service-account key,
+or GCP authentication is used by this workflow. Enable **Allow GitHub Actions
+to create and approve pull requests** in the repository's Actions settings so
+Renovate can open update PRs using the workflow token.
 
 The workflow runs on pushes to `dev`. Manual dispatch is available after the
 workflow file is present on the default branch; select `dev` as the run

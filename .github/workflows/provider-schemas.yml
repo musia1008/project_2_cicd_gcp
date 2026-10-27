@@ -23,20 +23,10 @@ jobs:
       - name: Check out consumer
         uses: actions/checkout@v4
 
-      - name: Require configured STS endpoint
-        env:
-          GHEC_STS_DOMAIN: ${{ vars.GHEC_STS_DOMAIN }}
-        run: |
-          if [ -z "$GHEC_STS_DOMAIN" ]; then
-            echo "::error::Set the GHEC_STS_DOMAIN repository variable to the configured GHEC STS service hostname."
-            exit 1
-          fi
-
       - name: Exchange GitHub OIDC token for provider read token
         id: provider-sts
         uses: octo-sts/action@f603d3be9d8dd9871a265776e625a27b00effe05 # v1.1.1
         with:
-          domain: ${{ vars.GHEC_STS_DOMAIN }}
           scope: musain11/master_project_complete
           identity: project_2_cicd_gcp
 
