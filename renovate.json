@@ -1,0 +1,16 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "managerFilePatterns": ["/^provider-schemas\\.json$/"],
+      "matchStrings": ["\"commit\": \"(?<currentDigest>[a-f0-9]{40})\""],
+      "depNameTemplate": "master_project_complete",
+      "packageNameTemplate": "https://github.com/musain11/master_project_complete",
+      "datasourceTemplate": "git-refs",
+      "versioningTemplate": "git",
+      "currentValueTemplate": "dev"
+    }
+  ]
+}
