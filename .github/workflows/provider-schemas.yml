@@ -84,3 +84,4 @@ jobs:
         env:
           LOG_LEVEL: info
           RENOVATE_BASE_BRANCHES: '["dev"]'
+          RENOVATE_REPOSITORIES: '["musia1008/project_2_cicd_gcp"]'

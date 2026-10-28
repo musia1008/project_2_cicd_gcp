@@ -8,6 +8,7 @@ The `Provider schema refresh` GitHub Actions workflow reads
 `provider-bigquery-contracts-*` workflow artifact, available for seven days.
 The pinned provider commit is recorded in [`provider-schemas.json`](./provider-schemas.json).
 Renovate uses the Git refs datasource to update that commit and open a PR.
+The workflow explicitly targets this repository and its `dev` base branch.
 
 The workflow requests a short-lived provider token through the `octo-sts`
 service using the provider's `.github/chainguard/project_2_cicd_gcp.sts.yaml`
