@@ -4,12 +4,15 @@ on:
   push:
     branches:
       - dev
+      - main
     paths:
       - .github/workflows/provider-schemas.yml
       - provider-schemas.json
       - renovate.json
       - scripts/validate_provider_schemas.py
   workflow_dispatch:
+  schedule:
+    - cron: "0 */6 * * *"
 
 permissions:
   contents: write
@@ -22,6 +25,8 @@ jobs:
     steps:
       - name: Check out consumer
         uses: actions/checkout@v4
+        with:
+          ref: dev
 
       - name: Read pinned provider ref
         id: provider-pin

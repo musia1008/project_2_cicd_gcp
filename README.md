@@ -19,12 +19,12 @@ or GCP authentication is used by this workflow. Enable **Allow GitHub Actions
 to create and approve pull requests** in the repository's Actions settings so
 Renovate can open update PRs using the workflow token.
 
-The workflow runs on pushes to `dev`. Manual dispatch is available after the
-workflow file is present on the default branch; select `dev` as the run
-ref. It is intentionally not scheduled: GitHub schedules run against the
-default branch (`main` here), but the trust policy accepts only the `dev`
-OIDC subject. To enable scheduled Renovate runs without broadening trust,
-make `dev` the repository default branch.
+The workflow runs on relevant pushes to `dev`, manual dispatch, and a
+six-hour schedule. Scheduled workflows run from the default branch (`main`),
+so the workflow is also present there and checks out consumer `dev` before
+reading the pin/configuration or running Renovate. The provider trust policy
+allows only this repository's `main` and `dev` OIDC subjects, and the minted
+provider token remains read-only. Renovate targets consumer `dev`.
 
 The existing Terraform deployment workflow, if present on another branch, is
 not part of this provider-schema workflow.
